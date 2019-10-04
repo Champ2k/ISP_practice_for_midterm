@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Choice, Question
+from .models import Choice, Question, Product
 
 class IndexView(generic.ListView):
     model = Question
@@ -36,11 +36,17 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+
 class DisplayView(generic.ListView):
     model = Question
     template_name = 'polls/display.html'
     context_object_name = 'latest_question_list'
 
+
+class ProductView(generic.ListView):
+    model = Product
+    template_name = 'polls/product_index.html'
+    context_object_name = 'latest_product_list'
 
 
 def vote(request, question_id):
