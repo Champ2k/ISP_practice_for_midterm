@@ -1,0 +1,14 @@
+<body style="background:url('https://i.redd.it/ck8lswwqnwl11.png') no-repeat";>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li>
+        <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+    </li>    
+    {% endfor %}
+    </ul>
+      <a href="{% url 'polls:display' %}">View all choice</a>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>

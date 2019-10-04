@@ -1,0 +1,21 @@
+<body style="background:url('https://i.redd.it/ck8lswwqnwl11.png') no-repeat";>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li>
+        <p>{{ question.question_text }}</p>
+        <ul>
+            {% for choice in question.choice_set.all %}
+            <li>
+                <p>{{ choice }}: {{ choice.votes }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </li> 
+    {% endfor %}
+    </ul>
+      <a href="{% url 'polls:index' %}">Home</a>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>

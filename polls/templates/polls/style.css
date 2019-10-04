@@ -1,0 +1,14 @@
+/* .fullscreen-block{
+    background: url(https://data.whicdn.com/images/304660179/original.gif) no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+} */
+.fullscreen-block{
+    background: #006699 url('https://i.imgur.com/f4S16nY.jpg') no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
