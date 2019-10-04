@@ -23,7 +23,7 @@ class Price(models.Model):
 
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     price_int = models.IntegerField(default=0)
-    qutity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=0)
 
     def __str__(self):
         return self.choice_text
