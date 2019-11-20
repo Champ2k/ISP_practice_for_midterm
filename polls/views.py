@@ -48,6 +48,25 @@ class ProductView(generic.ListView):
     template_name = 'polls/product_index.html'
     context_object_name = 'latest_product_list'
 
+class CompletedView(generic.DetailView):
+    model = Product
+    template_name = 'polls/product_result.html'
+
+    def get_queryset(self):
+        """
+        Excludes any questions that aren't published yet.
+        """
+        return Product.objects.filter()
+
+
+def buy(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product.quantity -= 1
+    product.save()
+    # Always return an HttpResponseRedirect after successfully dealing
+    # with POST data. This prevents data from being posted twice if a
+    # user hits the Back button.
+    return HttpResponseRedirect(reverse('polls:product_result', args=(product.id,)))
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -66,3 +85,15 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def get_reply( prompt_msg ):
+      reply = input( prompt_msg )
+      return reply.lower( )
+ 
+# use the method
+reply = get_reply( "Do you like Python? " )
+if reply == "yes":
+    print("Good! So do I.")
+else:
+    print('Sorry. Try Javascript instead.')
+

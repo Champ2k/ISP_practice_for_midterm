@@ -8,6 +8,8 @@
     {% endfor %}
     </ul>
       <a href="{% url 'polls:display' %}">View all choice</a>
+      <br>
+      <a href="{% url 'polls:product_index' %}">View Product</a>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}

@@ -1,0 +1,13 @@
+<body style="background:url('https://i.redd.it/ck8lswwqnwl11.png') no-repeat";>
+    <h1>Product</h1>
+    
+    <ul>
+    {% for product in product.objects.all %}
+        <li>{{ product.description }} -- {{ product.price }} qnty in stock{{ product.quantity }}</li>
+    {% endfor %}
+    </ul>
+    
+    <a href="{% url 'polls:index' %}">Home</a>
+    &nbsp;&nbsp;
+    <a href="{% url 'polls:product_index' %}">View product</a>
+    </body>

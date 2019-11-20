@@ -30,15 +30,20 @@ class Choice(models.Model):
         return self.choice_text
 
 class Product(models.Model):
+    
     upccode = models.CharField('UPC code',max_length=14)
     description = models.CharField('Description', max_length=60)
     price = models.DecimalField("Unit Price", 
             max_digits=9, decimal_places=2)
-    quantity = models.IntegerField("Quantity", validators=[MinValueValidator(1)])
+    quantity = models.IntegerField("Quantity", validators=[MinValueValidator(0)])
 
-    def quantity_in_stock(self):
-        """Compute and return number of units in stock"""
-        return self.quantity
+    
 
     def __str__(self):
-        return (f"{self.description} {self.price}฿ remained:{self.quantity_in_stock()}")
+        return (f"{self.description} {self.price}฿ remained:{self.quantity}")
+
+def quantity_in_stock(self,text):
+        """Compute and return number of units in stock"""
+        p = Product.objects.filter(text__contain = text)
+
+        return [p]
